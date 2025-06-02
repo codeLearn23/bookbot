@@ -1,12 +1,15 @@
+import sys
+
+
+def get_book_text():  # this function retrieves and opens the source text file
+    with open(sys.argv[1]) as f:
+        return f.read()
+
+
 def word_counter():  # this function counts the words in the source text file
     source = get_book_text()  # bring the source file into this function
     word_total = source.split()  # split source file into list
     return len(word_total)  # return list length (total words)
-
-
-def get_book_text():  # this function retrieves and opens the source text file
-    with open("books/frankenstein.txt") as f:
-        return f.read()
 
 
 def character_counter():  # this function counts the characters in the source file
@@ -40,7 +43,7 @@ def report_maker():
     alphaset_list = list(alphaset)  # ... that are in the alphabet
 
     print(
-        f"============ BOOKBOT ============\nAnalyzing book found at books/frankenstein.txt...\n----------- Word Count ----------\nFound {word_counter()} total words\n--------- Character Count -------"
+        f"============ BOOKBOT ============\nAnalyzing book found at {sys.argv[1]}...\n----------- Word Count ----------\nFound {word_counter()} total words\n--------- Character Count -------"
     )
     for j in listed:
         if j[0] in alphaset_list:
